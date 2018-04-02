@@ -1,0 +1,18 @@
+#menu "LGE Board Selection"
+
+config MACH_LGE
+	bool "mach lge"
+	default y
+	
+config LGE_LUT_KCAL
+	bool "lge LUT Kcal"
+	default y
+
+config LGE_BOOTLOADER_LOG
+	depends on MACH_LGE
+	bool "Support LGE bootloader log"
+	default n
+	help
+	        LGE bootloader log
+
+#endmenu
