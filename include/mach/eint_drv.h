@@ -1,0 +1,25 @@
+#ifndef __EINT_DRV_H
+#define __EINT_DRV_H
+
+struct mt_eint_driver
+{
+    struct device_driver driver;
+    const struct platform_device_id *id_table;
+    int (*eint_max_channel)(void);
+    void (*enable)(unsigned int eint_num);
+    void (*disable)(unsigned int eint_num);
+    unsigned int (*is_disable)(unsigned int eint_num);
+    unsigned int (*get_sens)(unsigned int eint_num);
+    unsigned int (*set_sens)(unsigned int eint_num, unsigned int sens);
+    unsigned int (*get_polarity)(unsigned int eint_num);
+    void (*set_polarity)(unsigned int eint_num, unsigned int pol);
+    unsigned int (*get_debounce_cnt)(unsigned int eint_num);
+    void (*set_debounce_cnt)(unsigned int eint_num, unsigned int ms);
+    int (*is_debounce_en)(unsigned int eint_num);
+    void (*enable_debounce)(unsigned int eint_num);
+    void (*disable_debounce)(unsigned int eint_num);
+};
+
+struct mt_eint_driver *get_mt_eint_drv(void);
+
+#endif
